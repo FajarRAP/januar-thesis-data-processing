@@ -34,7 +34,7 @@ class MetricsEvaluator:
         divisor = precision + recall
         return 2 * (precision * recall) / divisor if divisor > 0 else 0
 
-    def plot_confusion_matrix(self, title='Confusion Matrix'):
+    def plot_confusion_matrix(self, title='Confusion Matrix', show=False):
         # 1. Ambil nilai matriks dari class buatan Anda
         cm = self.confusion_matrix()
 
@@ -70,5 +70,10 @@ class MetricsEvaluator:
         plt.xlabel('Tebakan Model (Predicted)', fontsize=12)
         plt.ylabel('Nilai Asli (Actual)', fontsize=12)
         plt.title(title, fontsize=14, pad=20)
+
+        if show:
+            plt.show()
+        else:
+            plt.close(fig)
 
         return fig
