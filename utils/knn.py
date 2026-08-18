@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 from collections import Counter
 
 class KNN:
@@ -7,14 +8,14 @@ class KNN:
     self.k = k
 
   # Fungsi untuk melatih model (menyimpan data latih)
-  def fit(self, X_train, y_train):
+  def fit(self, X_train:pd.DataFrame, y_train:pd.DataFrame):
     self.X_train = X_train
     self.y_train = y_train
     
     return self
 
   # Fungsi untuk memprediksi label menggunakan jarak Euclidean dan Manhattan
-  def predict(self, X_test):
+  def predict(self, X_test:pd.DataFrame):
     return {
         'Euclidean': np.array([self._euclidean_distance(patient) for patient in X_test]),
         'Manhattan': np.array([self._manhattan_distance(patient) for patient in X_test])
